@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDestroy
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 055439f6a2bfa7e439effc53c885d1c0, type: 3}
+    - {fileID: 2800000, guid: 235cafbf6ce31864b85247c1bab2c2e1, type: 3}
+    - {fileID: 2800000, guid: a4e907ef931482542bdb4a614348e218, type: 3}
+    - {fileID: 2800000, guid: 26c3b5b0362899641aa540c395a24898, type: 3}
+    - {fileID: 2800000, guid: 5962ff4be78a3564db545367434e0e59, type: 3}
+    - {fileID: 2800000, guid: e991b1fc0fb5ab74fa39ee043709c47f, type: 3}
+    - {fileID: 2800000, guid: c011fe0859091b543be2a535c5c81f5c, type: 3}
+    - {fileID: 2800000, guid: 5a255e895bf38ff4aa59946935ec0751, type: 3}
+    - {fileID: 2800000, guid: 597552097adb9dc44a68d018ab151cbe, type: 3}
+    - {fileID: 2800000, guid: cedc9cbafad74d4418df9ad994e3df57, type: 3}
+    - {fileID: 2800000, guid: 7cb62bd739d97884680c9e79eff64fd7, type: 3}
+    - {fileID: 2800000, guid: 7dcc917da3f57e24b97964d674b83d0c, type: 3}
+    - {fileID: 2800000, guid: 3bb5dc1f96525d34ab4bd85c35b52d9f, type: 3}
+    - {fileID: 2800000, guid: b8f62cb48210f8144a3902cb02ab2ba1, type: 3}
+    - {fileID: 2800000, guid: 16851b037c1e2ba48b80b95809069f40, type: 3}
+    - {fileID: 2800000, guid: 72bda853f73eb554cb1cc9e711d6316c, type: 3}
+    - {fileID: 2800000, guid: c8557170a7f02aa42a7a28c2546af042, type: 3}
+    - {fileID: 2800000, guid: 074a4d7ff59d14a44bdf9477f2ff2736, type: 3}
+    - {fileID: 2800000, guid: 2cca493fbb4563e49a6c853ac02b3a64, type: 3}
+    totalSpriteSurfaceArea: 3150000
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: c8557170a7f02aa42a7a28c2546af042, type: 3}
+  - {fileID: 21300000, guid: 26c3b5b0362899641aa540c395a24898, type: 3}
+  - {fileID: 21300000, guid: 16851b037c1e2ba48b80b95809069f40, type: 3}
+  - {fileID: 21300000, guid: 72bda853f73eb554cb1cc9e711d6316c, type: 3}
+  - {fileID: 21300000, guid: b8f62cb48210f8144a3902cb02ab2ba1, type: 3}
+  - {fileID: 21300000, guid: 055439f6a2bfa7e439effc53c885d1c0, type: 3}
+  - {fileID: 21300000, guid: 7cb62bd739d97884680c9e79eff64fd7, type: 3}
+  - {fileID: 21300000, guid: c011fe0859091b543be2a535c5c81f5c, type: 3}
+  - {fileID: 21300000, guid: 597552097adb9dc44a68d018ab151cbe, type: 3}
+  - {fileID: 21300000, guid: 5a255e895bf38ff4aa59946935ec0751, type: 3}
+  - {fileID: 21300000, guid: cedc9cbafad74d4418df9ad994e3df57, type: 3}
+  - {fileID: 21300000, guid: 5962ff4be78a3564db545367434e0e59, type: 3}
+  - {fileID: 21300000, guid: e991b1fc0fb5ab74fa39ee043709c47f, type: 3}
+  - {fileID: 21300000, guid: 7dcc917da3f57e24b97964d674b83d0c, type: 3}
+  - {fileID: 21300000, guid: 3bb5dc1f96525d34ab4bd85c35b52d9f, type: 3}
+  - {fileID: 21300000, guid: 2cca493fbb4563e49a6c853ac02b3a64, type: 3}
+  - {fileID: 21300000, guid: 074a4d7ff59d14a44bdf9477f2ff2736, type: 3}
+  - {fileID: 21300000, guid: 235cafbf6ce31864b85247c1bab2c2e1, type: 3}
+  - {fileID: 21300000, guid: a4e907ef931482542bdb4a614348e218, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - anim_water_destroy_16
+  - anim_water_destroy_3
+  - anim_water_destroy_14
+  - anim_water_destroy_15
+  - anim_water_destroy_13
+  - anim_water_destroy_0
+  - anim_water_destroy_10
+  - anim_water_destroy_6
+  - anim_water_destroy_8
+  - anim_water_destroy_7
+  - anim_water_destroy_9
+  - anim_water_destroy_4
+  - anim_water_destroy_5
+  - anim_water_destroy_11
+  - anim_water_destroy_12
+  - anim_water_destroy_18
+  - anim_water_destroy_17
+  - anim_water_destroy_1
+  - anim_water_destroy_2
+  m_Tag: WaterDestroy
+  m_IsVariant: 0

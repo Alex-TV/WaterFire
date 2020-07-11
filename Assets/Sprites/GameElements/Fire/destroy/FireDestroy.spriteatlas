@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: FireDestroy
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 3c5e3e9f102e1de4f875c991b00d1a3a, type: 3}
+    - {fileID: 2800000, guid: 33ea686548feac34db5e91badbdda957, type: 3}
+    - {fileID: 2800000, guid: a3b0fcfc275fa4a44b2dbe74b233327e, type: 3}
+    - {fileID: 2800000, guid: 943b1aa5210bdd84fa03b55646ddf9a0, type: 3}
+    - {fileID: 2800000, guid: 08e03408b23f7e6478a7662615c674e0, type: 3}
+    - {fileID: 2800000, guid: 6426e7954d1a832488efc417e467da01, type: 3}
+    - {fileID: 2800000, guid: 9dd759af50979c54a98ef606453d5ed7, type: 3}
+    - {fileID: 2800000, guid: cca3734d7126f6f4bbec39862b706994, type: 3}
+    - {fileID: 2800000, guid: d4a05a33faf603a49bc85e705eefbaa0, type: 3}
+    - {fileID: 2800000, guid: 6f2685d82cb044f4fb74ef7ad62af06a, type: 3}
+    - {fileID: 2800000, guid: eac0803a89de00a4ab78c4456d70f19d, type: 3}
+    - {fileID: 2800000, guid: 8d7bd66dfb0a1ca43a8be825c4fe3778, type: 3}
+    - {fileID: 2800000, guid: 1c71d1a232671d540b6a1a15b01aaa4f, type: 3}
+    - {fileID: 2800000, guid: 7bdcf779a04dba54097e0f544c9b4806, type: 3}
+    - {fileID: 2800000, guid: aa14cddf3fbd48d4cabce0a02de0012f, type: 3}
+    - {fileID: 2800000, guid: 8a617bb73406bc146a4cd01f9a71ae20, type: 3}
+    - {fileID: 2800000, guid: ab3d49fbbcae5004c9cb14ade29eeff3, type: 3}
+    totalSpriteSurfaceArea: 2970000
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1c71d1a232671d540b6a1a15b01aaa4f, type: 3}
+  - {fileID: 21300000, guid: d4a05a33faf603a49bc85e705eefbaa0, type: 3}
+  - {fileID: 21300000, guid: 33ea686548feac34db5e91badbdda957, type: 3}
+  - {fileID: 21300000, guid: 6426e7954d1a832488efc417e467da01, type: 3}
+  - {fileID: 21300000, guid: 943b1aa5210bdd84fa03b55646ddf9a0, type: 3}
+  - {fileID: 21300000, guid: 8a617bb73406bc146a4cd01f9a71ae20, type: 3}
+  - {fileID: 21300000, guid: 08e03408b23f7e6478a7662615c674e0, type: 3}
+  - {fileID: 21300000, guid: 6f2685d82cb044f4fb74ef7ad62af06a, type: 3}
+  - {fileID: 21300000, guid: 7bdcf779a04dba54097e0f544c9b4806, type: 3}
+  - {fileID: 21300000, guid: eac0803a89de00a4ab78c4456d70f19d, type: 3}
+  - {fileID: 21300000, guid: ab3d49fbbcae5004c9cb14ade29eeff3, type: 3}
+  - {fileID: 21300000, guid: a3b0fcfc275fa4a44b2dbe74b233327e, type: 3}
+  - {fileID: 21300000, guid: cca3734d7126f6f4bbec39862b706994, type: 3}
+  - {fileID: 21300000, guid: 8d7bd66dfb0a1ca43a8be825c4fe3778, type: 3}
+  - {fileID: 21300000, guid: 3c5e3e9f102e1de4f875c991b00d1a3a, type: 3}
+  - {fileID: 21300000, guid: 9dd759af50979c54a98ef606453d5ed7, type: 3}
+  - {fileID: 21300000, guid: aa14cddf3fbd48d4cabce0a02de0012f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - anim_fire_destroy_12
+  - anim_fire_destroy_8
+  - anim_fire_destroy_1
+  - anim_fire_destroy_5
+  - anim_fire_destroy_3
+  - anim_fire_destroy_15
+  - anim_fire_destroy_4
+  - anim_fire_destroy_9
+  - anim_fire_destroy_13
+  - anim_fire_destroy_10
+  - anim_fire_destroy_16
+  - anim_fire_destroy_2
+  - anim_fire_destroy_7
+  - anim_fire_destroy_11
+  - anim_fire_destroy_0
+  - anim_fire_destroy_6
+  - anim_fire_destroy_14
+  m_Tag: FireDestroy
+  m_IsVariant: 0
