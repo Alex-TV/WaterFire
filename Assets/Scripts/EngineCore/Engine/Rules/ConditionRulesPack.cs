@@ -1,6 +1,6 @@
 ﻿
 using System;
-using Engine.Models;
+using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
 

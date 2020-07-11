@@ -3,7 +3,7 @@ using Engine.Pipeline.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Engine.Models;
+using Engine.Models.Interfaces;
 
 namespace Engine.Pipeline
 {

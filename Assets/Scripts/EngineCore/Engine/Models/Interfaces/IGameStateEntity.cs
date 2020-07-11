@@ -1,5 +1,5 @@
 ﻿
-namespace Engine.Models
+namespace Engine.Models.Interfaces
 {
     public interface IGameStateEntity 
     {

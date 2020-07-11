@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Engine.Models;
-using GameLoop.Entitys;
+using Engine.Models.Interfaces;
 
 namespace GameLoop.Model
 {

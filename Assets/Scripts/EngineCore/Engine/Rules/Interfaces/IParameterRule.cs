@@ -1,5 +1,6 @@
 ﻿
 using Engine.Models;
+using Engine.Models.Interfaces;
 using Engine.Pipeline;
 
 namespace Engine.Rules.Interfaces

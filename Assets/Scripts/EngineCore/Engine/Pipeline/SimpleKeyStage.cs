@@ -1,7 +1,6 @@
 ﻿
-using Engine.Models;
+using Engine.Models.Interfaces;
 using Engine.Rules;
-using GameLoop.Entitys;
 using System.Collections.Generic;
 using System.Linq;
 

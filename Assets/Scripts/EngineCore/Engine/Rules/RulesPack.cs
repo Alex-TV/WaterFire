@@ -2,6 +2,7 @@
 using Engine.Rules.Interfaces;
 using System.Collections.Generic;
 using Engine.Models;
+using Engine.Models.Interfaces;
 
 namespace Engine.Rules
 {
@@ -20,6 +21,11 @@ namespace Engine.Rules
             RuleList.AddRange(initialRules);
         }
 
+        /// <summary>
+        /// Запустить на выполнние
+        /// </summary>
+        /// <param name="model">модел откуда будут боатся entity</param>
+        /// <param name="engine">движок</param>
         public void Execute(IGameStateModel model, AbstractPipelineEngine engine)
         {
             foreach (var rule in RuleList)

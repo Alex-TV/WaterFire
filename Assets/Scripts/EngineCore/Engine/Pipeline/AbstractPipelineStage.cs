@@ -3,9 +3,9 @@ using System;
 using Engine.Pipeline.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using Engine.Models;
 using Engine.Rules.Interfaces;
 using UnityEngine;
+using Engine.Models.Interfaces;
 
 namespace Engine.Pipeline
 {

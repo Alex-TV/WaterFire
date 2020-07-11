@@ -1,6 +1,6 @@
 ﻿
 
-using Engine.Models;
+using Engine.Models.Interfaces;
 using Engine.Rules;
 
 namespace Engine.Pipeline
