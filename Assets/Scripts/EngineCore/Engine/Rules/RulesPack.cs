@@ -1,7 +1,6 @@
 ﻿using Engine.Pipeline;
 using Engine.Rules.Interfaces;
 using System.Collections.Generic;
-using Engine.Models;
 using Engine.Models.Interfaces;
 
 namespace Engine.Rules
