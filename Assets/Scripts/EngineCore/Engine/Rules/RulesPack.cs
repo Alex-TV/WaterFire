@@ -1,4 +1,5 @@
-﻿using Engine.Pipeline;
+﻿using System;
+using Engine.Pipeline;
 using Engine.Rules.Interfaces;
 using System.Collections.Generic;
 using Engine.Models.Interfaces;
@@ -49,7 +50,7 @@ namespace Engine.Rules
                 ExtremeCrutch = null;
             }
 
-            engine.PipelineStageExecuted = entity => model.AddEntity(entity);
+            engine.PipelineStageExecuted = entity => Array.ForEach(entity, e => model.AddEntity(e));
             // Кинем в трейс всю кучу матчей для общего образования.
             engine.ExecuteAll();
         }

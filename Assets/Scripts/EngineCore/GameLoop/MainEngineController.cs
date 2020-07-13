@@ -4,6 +4,8 @@ using Engine.Pipeline;
 using GameLoop.Helpers;
 using System;
 using System.Collections.Generic;
+using Module.Levels.Facade;
+using Module.VisualElementsModule.Facade;
 
 namespace GameLoop
 {
@@ -36,11 +38,11 @@ namespace GameLoop
                     };
 
 
-        public MainEngineController(IGameStateModel model)
+        public MainEngineController(IGameStateModel model, ILevelFacade levelFacade, IVisualElementsFacade visualElementsFacade)
         {
             _model = model;
             _rulesPacksFactory = new RulesPacksFactory();
-            _engine = new PipelineEngine();
+            _engine = new PipelineEngine(levelFacade, visualElementsFacade);
         }
 
         public void EngineRequest(EventTypeEnum eventTypeEnum)

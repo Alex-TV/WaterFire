@@ -1,9 +1,7 @@
 ﻿
-using Engine.Models;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
-using System;
 
 namespace Engine.Rules
 {
@@ -13,8 +11,6 @@ namespace Engine.Rules
     /// </summary>
     public abstract class Rule<T> : IRule where T : class, IGameStateEntity
     {
-        public Type NeedEntityType => typeof(T);
-
         public abstract void CheckRule(T entity, PipelineEngine engine);
 
         public virtual void CreatePipeline(IGameStateModel model, AbstractPipelineEngine engine) => CheckRule(model.TryGetEntity<T>(), engine as PipelineEngine);

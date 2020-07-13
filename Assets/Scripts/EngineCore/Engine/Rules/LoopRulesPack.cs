@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
@@ -27,6 +28,7 @@ namespace Engine.Rules
             for (var loops = 0; loops < MaxLoopsCount; loops++)
             {
                 var oldCount = engine.Stages.Count;
+                engine.PipelineStageExecuted = entity => Array.ForEach(entity, e => model.AddEntity(e));
                 Childs.Execute(model, engine);
                 if (engine.Stages.Count == oldCount) return;
             }

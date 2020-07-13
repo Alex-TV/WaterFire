@@ -12,8 +12,13 @@ namespace GameLoop.Model
 
         public T TryGetEntity<T>() where T : class, IGameStateEntity  
         {
-            IGameStateEntity result = null;
-            if (_entitiesContainer.TryGetValue(typeof(T) , out result))
+
+            if (typeof(T) == GameStateEntity.Empty.GetType())
+            {
+                return GameStateEntity.Empty as T;
+            }
+
+            if (_entitiesContainer.TryGetValue(typeof(T) , out var result))
             {
                 _entitiesContainer.Remove(typeof(T));
                 return result as T; 

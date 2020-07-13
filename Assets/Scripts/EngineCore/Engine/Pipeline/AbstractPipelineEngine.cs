@@ -19,7 +19,7 @@ namespace Engine.Pipeline
 
         private string _prefix = null;
         public Action PipelineEngineExecuted;
-        public Action<IGameStateEntity> PipelineStageExecuted;
+        public Action<IGameStateEntity[]> PipelineStageExecuted;
 
         public List<IPipelineStage> Stages { get; } = new List<IPipelineStage>();
 
@@ -31,7 +31,7 @@ namespace Engine.Pipeline
             Stages.Add(stage);
         }
 
-        private void OnCompleteStage(object source, IGameStateEntity entity)
+        private void OnCompleteStage(object source, params IGameStateEntity[] entity)
         {
             var stage = source as IPipelineStage;
             stage.CompleteEvent -= OnCompleteStage;

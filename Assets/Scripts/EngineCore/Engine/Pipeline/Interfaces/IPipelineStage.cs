@@ -8,7 +8,7 @@ namespace Engine.Pipeline.Interfaces
 {
     public interface IPipelineStage : ITracing, ILoged 
     {
-        event EventHandler<IGameStateEntity> CompleteEvent;
+        event EventHandler<IGameStateEntity[]> CompleteEvent;
 
         /// <summary>Условие выполнения стаэйджа, если не задано или вернет true то стайжд будет выполнен</summary>
         Func<bool> СonditionProcessing { get; set; }

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
@@ -18,6 +19,7 @@ namespace Engine.Rules
         /// <summary> Само по себе правило новых стэйджей не создаёт </summary>
         public void CreatePipeline(IGameStateModel model, AbstractPipelineEngine engine)
         {
+            engine.PipelineStageExecuted = entity => Array.ForEach(entity, e => model.AddEntity(e));
             Childs.Execute(model, engine);
             engine.СonditionExecute(s => Childs.RuleList.Contains(s.Producer as IRule));
         }

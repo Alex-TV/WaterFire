@@ -24,7 +24,7 @@ namespace Engine.Pipeline
 #pragma warning disable CS0067 // The event 'PipelineStage.CanceledEvent' is never used
         public event EventHandler CanceledEvent;
 #pragma warning restore CS0067 // The event 'PipelineStage.CanceledEvent' is never used
-        public event EventHandler<IGameStateEntity> CompleteEvent;
+        public event EventHandler<IGameStateEntity[]> CompleteEvent;
 
         private System.Diagnostics.Stopwatch _logWatch;
         protected AbstractPipelineEngine Engine;
@@ -132,7 +132,7 @@ namespace Engine.Pipeline
             }
         }
 
-        protected void OnPreviouseComplete(object source, IGameStateEntity entity)
+        protected void OnPreviouseComplete(object source, IGameStateEntity[] entity)
         {
             RemovePreviouse(source as IPipelineStage);
         }
@@ -174,7 +174,7 @@ namespace Engine.Pipeline
         }
 
         /// <summary> Этот метод дёргать когда надо закончить стадию.  </summary>
-        protected void FinishStage(IGameStateEntity entity)
+        protected void FinishStage(params IGameStateEntity[] entity)
         {
             if (State == PipelineStates.Execution)
             {
