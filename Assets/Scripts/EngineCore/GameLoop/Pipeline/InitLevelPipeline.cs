@@ -1,11 +1,11 @@
 ﻿
 using System.Collections.Generic;
 using Engine.Pipeline;
-using Engine.Rules;
 using Engine.Rules.Interfaces;
 using EngineCore.GameLoop.Entitys;
 using EngineCore.GameLoop.Entitys.Models;
 using EngineCore.GameLoop.Helpers;
+using GameLoop.Entitys;
 using Scripts.Controllers.Helpers;
 
 namespace EngineCore.GameLoop.Pipeline
@@ -31,9 +31,10 @@ namespace EngineCore.GameLoop.Pipeline
                 createElements.Add(new CreateVisualElementModel(new FieldCoords(cellPos, rowPos), grid[i].Element));
             }
 
-            var createElementsEntity = new CreateVisualElementsEntity(createElements);
+            var gridEntity = new ElementGridEntity(new VisualElementModel[cellsCount, rowsCount]);
+            var createElementsEntity = new CreateVisualElementsEntity(createElements, gridEntity);
             var levelStateEntity = new LevelStateEntity(Entity.LevelConfigModel.Num, LevelStateEnum.Play, 0);
-            FinishStage(levelStateEntity, createElementsEntity);
+            FinishStage(levelStateEntity, createElementsEntity, gridEntity);
         }
     }
 }

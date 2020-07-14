@@ -13,7 +13,7 @@ namespace Module.VisualElementsModule.Facade
 
         public void Init()
         {
-            _elementsProvider = Resources.Load<VisualElementsProvider>("GameData/View/VisualElementsList");
+            _elementsProvider = Resources.Load<VisualElementsProvider>("GameData/Views/VisualElementsList");
         }
 
         public GameElementView CreateVisualElement(GameElementType name)

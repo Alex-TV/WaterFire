@@ -5,9 +5,9 @@ namespace Scripts.Controllers.Helpers
 {
     public class CoordinateConverter
     {
-        public static float CellSize = 158;
-        public static int GridSizeX = 3;
-        public static int GridSizeY = 9;
+        public static float CellSize = 2;
+        public static int GridSizeX = 6;
+        public static int GridSizeY = 7;
         public static Vector3 GridCentre { get; set; } = Vector3.zero;
 
         /// <summary>

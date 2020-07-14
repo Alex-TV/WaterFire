@@ -8,8 +8,10 @@ namespace GameLoop
     public sealed class RulesPacksFactory
     {
         public RulesPack StartLevelPack { get; } = new RulesPack(
-            new  SeparateRulesPack(new LoadLevelRule()),
-            new InitLevelRule()
+            new SeparateRulesPack(new LoadLevelRule()),
+            new SeparateRulesPack(new InitLevelRule()),
+            new SeparateRulesPack(new CreateVisualElementsRule()),
+            new UpdateLayerVisualElementsRule()
             );
 
         /// <summary> Пользователь сдвинул игровой элемент </summary>

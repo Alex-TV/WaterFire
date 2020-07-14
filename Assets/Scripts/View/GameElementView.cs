@@ -10,6 +10,11 @@ namespace Assets.Scripts.View
 
         private Action _dieCallBack;
 
+        private void Start()
+        {
+            _animator.SetFloat("RandomStart", UnityEngine.Random.Range(0f,1f));
+        }
+
         public void SetOrderInLayer(int layer)
         {
             _sprite.sortingOrder = layer;
