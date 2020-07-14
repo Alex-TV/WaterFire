@@ -1,4 +1,5 @@
 ﻿using System;
+using Animations.CurveMoveAnimation.Implementations;
 using UnityEngine;
 
 namespace Assets.Scripts.View
@@ -7,6 +8,7 @@ namespace Assets.Scripts.View
     {
         [SerializeField] private Animator _animator = default;
         [SerializeField] private SpriteRenderer _sprite = default;
+        [SerializeField] private CurveAnimation _curveAnimation = default;
 
         private Action _dieCallBack;
 
@@ -29,6 +31,11 @@ namespace Assets.Scripts.View
         private void OnEndDie()
         {
             _dieCallBack?.Invoke();
+        }
+
+        public void Move(Vector3 position, Action callBack)
+        {
+            _curveAnimation.Play(position, callBack);
         }
     }
 }

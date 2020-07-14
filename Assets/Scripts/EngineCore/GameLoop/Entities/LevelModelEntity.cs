@@ -2,7 +2,7 @@
 using Engine.Models.Interfaces;
 using Module.Levels.Models;
 
-namespace EngineCore.GameLoop.Entitys
+namespace EngineCore.GameLoop.Entities
 {
     public class LevelModelEntity : IGameStateEntity
     {

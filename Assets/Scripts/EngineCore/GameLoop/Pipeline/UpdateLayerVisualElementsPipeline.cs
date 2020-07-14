@@ -2,7 +2,7 @@
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
 using EngineCore.GameLoop.Helpers;
-using GameLoop.Entitys;
+using GameLoop.Entities;
 
 namespace EngineCore.GameLoop.Pipeline
 {

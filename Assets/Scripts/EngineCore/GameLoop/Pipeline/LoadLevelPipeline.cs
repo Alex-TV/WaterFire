@@ -1,11 +1,9 @@
 ﻿
 using Engine.Models;
 using Engine.Pipeline;
-using Engine.Rules;
 using Engine.Rules.Interfaces;
-using EngineCore.GameLoop.Entitys;
+using EngineCore.GameLoop.Entities;
 using Module.Levels.Facade;
-
 
 namespace EngineCore.GameLoop.Pipeline
 {

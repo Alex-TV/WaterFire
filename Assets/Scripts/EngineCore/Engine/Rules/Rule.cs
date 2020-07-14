@@ -1,4 +1,5 @@
 ﻿
+using Assets.Scripts.EngineCore.Engine.Pipeline;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
@@ -11,8 +12,16 @@ namespace Engine.Rules
     /// </summary>
     public abstract class Rule<T> : IRule where T : class, IGameStateEntity
     {
-        public abstract void CheckRule(T entity, PipelineEngine engine);
+        public abstract bool CheckRule(T entity, PipelineEngine engine);
 
-        public virtual void CreatePipeline(IGameStateModel model, AbstractPipelineEngine engine) => CheckRule(model.TryGetEntity<T>(), engine as PipelineEngine);
+        public virtual void CreatePipeline(IGameStateModel model, AbstractPipelineEngine engine)
+        {
+            var entity = model.TryGetEntity<T>();
+            var engineInternal = engine as PipelineEngine;
+            if (!CheckRule(entity, engineInternal))
+            {
+                new ReturnEntityPipeline<T>(engineInternal, entity, this);
+            }
+        }
     }
 }

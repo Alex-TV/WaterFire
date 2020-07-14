@@ -17,9 +17,10 @@ namespace Engine.Rules
 
         public string Alias { get; private set; }
 
-        public override void CheckRule(T entity, PipelineEngine engine)
+        public override bool CheckRule(T entity, PipelineEngine engine)
         {
             _stageFactory?.Invoke(entity, engine, this);
+            return true;
         }
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   _levels:
   - _num: 1
     _fieldModel:
-      _cellsCount: 6
+      _collCount: 6
       _rowsCount: 6
       _grid:
       - _element: 1
@@ -56,7 +56,7 @@ MonoBehaviour:
       - _element: 1
   - _num: 1
     _fieldModel:
-      _cellsCount: 6
+      _collCount: 0
       _rowsCount: 6
       _grid:
       - _element: 1

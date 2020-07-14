@@ -1,9 +1,8 @@
 ﻿
-
 using Engine.Models.Interfaces;
 using EngineCore.GameLoop.Helpers;
 
-namespace EngineCore.GameLoop.Entitys
+namespace EngineCore.GameLoop.Entities
 {
     public class LevelStateEntity : IGameStateEntity
     {

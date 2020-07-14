@@ -8,9 +8,14 @@ namespace EngineCore.GameLoop.Rules
 {
     public class LoadLevelRule : Rule<GameStateEntity>
     {
-        public override void CheckRule(GameStateEntity entity, PipelineEngine engine)
+        public override bool CheckRule(GameStateEntity entity, PipelineEngine engine)
         {
+            if (entity == null)
+            {
+                return true;
+            }
             new LoadLevelPipeline(engine, GameStateEntity.Empty, this);
+            return true;
         }
     }
 }

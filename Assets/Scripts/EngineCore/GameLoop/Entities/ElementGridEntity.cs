@@ -1,8 +1,8 @@
 ﻿
 using Engine.Models.Interfaces;
-using EngineCore.GameLoop.Entitys.Models;
+using EngineCore.GameLoop.Entities.Models;
 
-namespace GameLoop.Entitys
+namespace GameLoop.Entities
 {
     public class ElementGridEntity : IGameStateEntity
     {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6574235771484373627}
   - component: {fileID: 6574235771484373626}
   - component: {fileID: 2034101557133811591}
+  - component: {fileID: 1534938756033466569}
   m_Layer: 0
   m_Name: FireElement
   m_TagString: Untagged
@@ -114,3 +115,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 6574235771484373627}
   _sprite: {fileID: 6574235771484373626}
+  _curveAnimation: {fileID: 1534938756033466569}
+--- !u!114 &1534938756033466569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574235771484373625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6652c0d82359d4b4bb7d0ad269d092f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.5
+  _curveType: 1
+  _amplitudeX: 0
+  _amplitudeY: 0
+  _targetPosition: {x: 0, y: 0, z: 0}

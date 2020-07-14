@@ -2,19 +2,20 @@
 using Engine.Pipeline;
 using Engine.Rules;
 using EngineCore.GameLoop.Pipeline;
-using GameLoop.Entitys;
+using GameLoop.Entities;
 
 namespace EngineCore.GameLoop.Rules
 {
-   public class UpdateLayerVisualElementsRule : Rule<ElementGridEntity>
+    public class UpdateLayerVisualElementsRule : Rule<ElementGridEntity>
     {
-        public override void CheckRule(ElementGridEntity entity, PipelineEngine engine)
+        public override bool CheckRule(ElementGridEntity entity, PipelineEngine engine)
         {
             if (entity == null)
             {
-                return;
+                return true;
             }
             new UpdateLayerVisualElementsPipeline(engine, entity, this);
+            return true;
         }
     }
 }

@@ -2,7 +2,7 @@
 using Assets.Scripts.View;
 using EngineCore.GameLoop.Helpers;
 
-namespace EngineCore.GameLoop.Entitys.Models
+namespace EngineCore.GameLoop.Entities.Models
 {
     public class VisualElementModel
     {

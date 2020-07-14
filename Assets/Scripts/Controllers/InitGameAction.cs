@@ -1,10 +1,11 @@
 ﻿
 using Controllers.Interfaces;
 using Engine.Models.Interfaces;
-using EngineCore.GameLoop.Entitys;
 using GameLoop;
 using GameLoop.Helpers;
 using GameLoop.Model;
+using Module.Input.Facade;
+using Module.Input.Facade.Controllers;
 using Module.Levels.Facade;
 using Module.VisualElementsModule.Facade;
 using Scripts.Controllers.Helpers;
@@ -21,6 +22,7 @@ namespace Controllers
         private ILevelFacade _levelFacade;
         private IGameStateModel _gameStateModel;
         private IVisualElementsFacade _visualElementsFacade;
+        private IInputFacade _inputFacade;
 
 
         private void Awake()
@@ -34,9 +36,10 @@ namespace Controllers
             _levelFacade = new LevelFacade();
             _inputController = new InputController();
             _visualElementsFacade = new VisualElementsFacade();
-
             _gameStateModel = new GameStateModel();
-            _mainEngineController = new MainEngineController(_gameStateModel, _levelFacade, _visualElementsFacade);
+            _inputFacade = new InputFacade(_inputController);
+
+            _mainEngineController = new MainEngineController(_gameStateModel, _levelFacade, _visualElementsFacade, _inputController, _inputFacade);
 
             var objUpdateController = new GameObject("UpdateController");
             _updateController = objUpdateController.AddComponent<UpdateController>();
@@ -48,8 +51,9 @@ namespace Controllers
         {
             _levelFacade.Init();
             _visualElementsFacade.Init();
-
+            _inputFacade.Init();
             _updateController.Active();
+            _mainEngineController.Init();
             _mainEngineController.EngineRequest(EventTypeEnum.LevelStart);
         }
     }

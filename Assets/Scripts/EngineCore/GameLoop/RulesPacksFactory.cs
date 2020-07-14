@@ -15,7 +15,10 @@ namespace GameLoop
             );
 
         /// <summary> Пользователь сдвинул игровой элемент </summary>
-        public RulesPack UserMoveElementsPack { get; } = new RulesPack();
+        public RulesPack UserMoveElementsPack { get; } = new RulesPack(
+            new SeparateRulesPack(new SwipeRule()),
+            new SeparateRulesPack(new MoveElementRule())
+            );
 
         /// <summary> Заполнение матчей элементов </summary>
         public RulesPack FillMathElementsPack { get; } = new RulesPack();

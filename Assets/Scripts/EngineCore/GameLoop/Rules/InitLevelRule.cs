@@ -1,31 +1,32 @@
 ﻿
 using Engine.Pipeline;
 using Engine.Rules;
-using EngineCore.GameLoop.Entitys;
+using EngineCore.GameLoop.Entities;
 using EngineCore.GameLoop.Pipeline;
 
 namespace EngineCore.GameLoop.Rules
 {
     public class InitLevelRule : Rule<LevelModelEntity>
     {
-        public override void CheckRule(LevelModelEntity entity, PipelineEngine engine)
+        public override bool CheckRule(LevelModelEntity entity, PipelineEngine engine)
         {
             if (entity == null)
             {
-                return;
+                return true;
             }
 
             if (entity.LevelConfigModel.FieldModel.RowsCount == 0)
             {
-                return;
+                return false;
             }
 
-            if (entity.LevelConfigModel.FieldModel.CellsCount == 0)
+            if (entity.LevelConfigModel.FieldModel.CollCount == 0)
             {
-                return;
+                return false;
             }
 
             new InitLevelPipeline(engine, entity, this);
+            return true;
         }
     }
 }

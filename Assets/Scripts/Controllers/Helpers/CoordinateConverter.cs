@@ -29,7 +29,6 @@ namespace Scripts.Controllers.Helpers
         public static FieldCoords CameraPositionToFieldCoords(Vector3 position)
         {
             position = Camera.main.ScreenToWorldPoint(position);
-
             return PositionToFieldCoords(position);
         }
 

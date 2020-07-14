@@ -18,13 +18,13 @@ namespace Module.Levels.Editor
             rect.height = EditorGUIUtility.singleLineHeight;
 
             var rowsProperty = property.FindPropertyRelative("_rowsCount");
-            var cellsProperty = property.FindPropertyRelative("_cellsCount");
+            var collProperty = property.FindPropertyRelative("_collCount");
             var gridProperty = property.FindPropertyRelative("_grid");
 
             EditorGUI.PropertyField(rect, rowsProperty);
             rect.y += _heightValue;
-            EditorGUI.PropertyField(rect, cellsProperty);
-            var gridSize = cellsProperty.intValue * rowsProperty.intValue;
+            EditorGUI.PropertyField(rect, collProperty);
+            var gridSize = collProperty.intValue * rowsProperty.intValue;
             if (gridSize <= 0)
             {
                 return;
@@ -33,7 +33,7 @@ namespace Module.Levels.Editor
             if (currentGridSize < gridSize)
             {
 
-                for (int i = gridProperty.arraySize; i < cellsProperty.intValue * rowsProperty.intValue; i++)
+                for (int i = gridProperty.arraySize; i < collProperty.intValue * rowsProperty.intValue; i++)
                 {
                     gridProperty.InsertArrayElementAtIndex(i);
                 }
@@ -48,15 +48,15 @@ namespace Module.Levels.Editor
             }
 
             rect.y += _heightValue;
-            if (EditorGUI.PropertyField(rect, gridProperty, new GUIContent($"Grid[{cellsProperty.intValue},{rowsProperty.intValue}]")))
+            if (EditorGUI.PropertyField(rect, gridProperty, new GUIContent($"Grid[{collProperty.intValue},{rowsProperty.intValue}]")))
             {
                 rect.x += _heightValue;
                 for (int i = 0; i < gridProperty.arraySize; i++)
                 {
                     var cell = gridProperty.GetArrayElementAtIndex(i);
                     rect.y += _heightValue;
-                    var rowPos = i / cellsProperty.intValue;
-                    var cellPos = i - rowPos * cellsProperty.intValue;
+                    var rowPos = i / collProperty.intValue;
+                    var cellPos = i - rowPos * collProperty.intValue;
                     if (EditorGUI.PropertyField(rect, cell, new GUIContent($"cell[{cellPos},{rowPos}]")))
                     {
                         rect.y += _heightValue;

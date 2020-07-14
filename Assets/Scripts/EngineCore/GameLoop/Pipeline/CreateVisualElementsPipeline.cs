@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.View;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
-using EngineCore.GameLoop.Entitys;
-using EngineCore.GameLoop.Entitys.Models;
+using EngineCore.GameLoop.Entities;
+using EngineCore.GameLoop.Entities.Models;
 using EngineCore.GameLoop.Helpers;
 using Module.VisualElementsModule.Facade;
 using Scripts.Controllers.Helpers;

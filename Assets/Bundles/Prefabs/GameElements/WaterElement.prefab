@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7497280243797220117}
   - component: {fileID: 7497280243797220116}
   - component: {fileID: 7584551910684345769}
+  - component: {fileID: 7174561767956606809}
   m_Layer: 0
   m_Name: WaterElement
   m_TagString: Untagged
@@ -114,3 +115,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 7497280243797220117}
   _sprite: {fileID: 7497280243797220116}
+  _curveAnimation: {fileID: 7174561767956606809}
+--- !u!114 &7174561767956606809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7497280243797220119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6652c0d82359d4b4bb7d0ad269d092f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 0.5
+  _curveType: 1
+  _amplitudeX: 0
+  _amplitudeY: 0
+  _targetPosition: {x: 0, y: 0, z: 0}

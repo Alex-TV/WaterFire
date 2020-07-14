@@ -1,10 +1,10 @@
 ﻿
 using System.Collections.Generic;
 using Engine.Models.Interfaces;
-using EngineCore.GameLoop.Entitys.Models;
-using GameLoop.Entitys;
+using EngineCore.GameLoop.Entities.Models;
+using GameLoop.Entities;
 
-namespace EngineCore.GameLoop.Entitys
+namespace EngineCore.GameLoop.Entities
 {
     public class CreateVisualElementsEntity : IGameStateEntity
     {

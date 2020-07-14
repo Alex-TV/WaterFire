@@ -4,8 +4,11 @@ using Engine.Pipeline;
 using GameLoop.Helpers;
 using System;
 using System.Collections.Generic;
+using Module.Input.Facade;
+using Module.Input.Facade.Controllers;
 using Module.Levels.Facade;
 using Module.VisualElementsModule.Facade;
+using Scripts.Controllers.Helpers;
 
 namespace GameLoop
 {
@@ -14,6 +17,7 @@ namespace GameLoop
     {
         private readonly PipelineEngine _engine;
         private readonly IGameStateModel _model;
+        private readonly IInputController _inputController;
         private readonly RulesPacksFactory _rulesPacksFactory;
 
         private readonly Dictionary<EventTypeEnum, List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>>> _rulePacks =
@@ -30,7 +34,7 @@ namespace GameLoop
                                     (f, m, e) => { }
                             }},
                             {EventTypeEnum.EventMouseUp,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
-                                (f, m, e) => f.FillMathElementsPack.Applay(m,e,"Mouse Up")
+                                (f, m, e) => f.UserMoveElementsPack.Applay(m,e,"Mouse Up")
                             }},
                             {EventTypeEnum.EventMouseDoubleClick,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
                                     (f, m, e) => { }
@@ -38,11 +42,37 @@ namespace GameLoop
                     };
 
 
-        public MainEngineController(IGameStateModel model, ILevelFacade levelFacade, IVisualElementsFacade visualElementsFacade)
+        public MainEngineController(IGameStateModel model, 
+                                    ILevelFacade levelFacade, 
+                                    IVisualElementsFacade visualElementsFacade,
+                                    IInputController inputController,
+                                    IInputFacade inputFacade)
         {
             _model = model;
+            _inputController = inputController;
             _rulesPacksFactory = new RulesPacksFactory();
-            _engine = new PipelineEngine(levelFacade, visualElementsFacade);
+            _engine = new PipelineEngine(levelFacade, visualElementsFacade, inputFacade);
+        }
+
+
+        public void Init()
+        {
+            _inputController.MouseUp += HandleInputControllerMouseUp;
+        }
+
+        private void HandleInputControllerMouseUp(object sender, FieldCoords coords)
+        {
+            EngineRequest(EventTypeEnum.EventMouseUp);
+        }
+
+        private void HandleInputControllerMouseMove(object sender, FieldCoords coords)
+        {
+            EngineRequest(EventTypeEnum.EventMouseMove);
+        }
+
+        private void HandleInputControllerMouseDown(object sender, FieldCoords coords)
+        {
+            EngineRequest(EventTypeEnum.EventMouseDown);
         }
 
         public void EngineRequest(EventTypeEnum eventTypeEnum)
