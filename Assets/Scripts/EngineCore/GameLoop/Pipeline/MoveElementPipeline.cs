@@ -23,8 +23,13 @@ namespace EngineCore.GameLoop.Pipeline
                 var endCoords = entityMoveElement.EndCoords;
                 var startElement = Entity.GridEntity.Grid[startCoords.X, startCoords.Y];
                 var endElement = Entity.GridEntity.Grid[endCoords.X, endCoords.Y];
-                _startMoveElements++;
-                startElement.View.Move(CoordinateConverter.FieldCoordsToPosition(endCoords), MoveEnd);
+                ;
+                if (startElement.Name != GameElementType.Empty)
+                {
+                    _startMoveElements++;
+                    startElement.View.Move(CoordinateConverter.FieldCoordsToPosition(endCoords), MoveEnd);
+                }
+
                 if (endElement.Name != GameElementType.Empty)
                 {
                     _startMoveElements++;

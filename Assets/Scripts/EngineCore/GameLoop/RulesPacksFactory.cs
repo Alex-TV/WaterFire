@@ -20,6 +20,12 @@ namespace GameLoop
             new SeparateRulesPack(new MoveElementRule())
             );
 
+
+        public RulesPack DropPack { get; } = new RulesPack(
+            new SeparateRulesPack(new DropRule()),
+            new MoveElementRule()
+            );
+
         /// <summary> Заполнение матчей элементов </summary>
         public RulesPack FillMathElementsPack { get; } = new RulesPack();
         /// <summary> Удаление элементов которые были в матче </summary>

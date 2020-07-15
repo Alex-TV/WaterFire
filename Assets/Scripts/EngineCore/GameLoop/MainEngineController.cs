@@ -35,10 +35,16 @@ namespace GameLoop
                             }},
                             {EventTypeEnum.EventMouseUp,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
                                 (f, m, e) => f.UserMoveElementsPack.Applay(m,e,"Mouse Up")
+
                             }},
                             {EventTypeEnum.EventMouseDoubleClick,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
                                     (f, m, e) => { }
-                            }}
+                            }},
+                            { EventTypeEnum.Loop,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
+                                (f, m, e) => f.DropPack.Applay(m,e,"Drop"),
+
+                            }}, 
+
                     };
 
 
@@ -89,6 +95,7 @@ namespace GameLoop
 
         public void CustomUpdate()
         {
+            EngineRequest(EventTypeEnum.Loop);
         }
     }
 }

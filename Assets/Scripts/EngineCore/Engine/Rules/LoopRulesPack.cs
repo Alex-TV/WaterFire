@@ -10,7 +10,7 @@ namespace Engine.Rules
     /// <summary>
     ///     Правило-контейнер. Содержит в себе рулепак, который крутится до тех пор, пока не перестанет давать новых стайжей.
     /// </summary>
-    public sealed class LoopRulesPack<T> : IRule  where T : class, IGameStateEntity
+    public sealed class LoopRulesPack : IRule 
     {
         public RulesPack Childs = new RulesPack();
 
@@ -30,14 +30,15 @@ namespace Engine.Rules
                 var oldCount = engine.Stages.Count;
                 engine.PipelineStageExecuted = entity => Array.ForEach(entity, e => model.AddEntity(e));
                 Childs.Execute(model, engine);
-                if (engine.Stages.Count == oldCount) return;
+                if (engine.Stages.Count == oldCount)
+                {
+                    return;
+                }
             }
             var strStages = "";
             engine.Stages.ForEach(s => strStages += $" Rule: {s.Producer} Stage: {s} name: {s.ToShortString()}\n");
             Debug.LogError(
                 $"Произошёл аварийный выход из цикла правил после {MaxLoopsCount} циклов. В последнем цикле добавлены следующие pipeline:\n {strStages} ");
         }
-
-        public void CheckRule(T state, PipelineEngine engine) { }
     }
 }

@@ -21,7 +21,7 @@ namespace Engine.Rules
         {
             engine.PipelineStageExecuted = entity => Array.ForEach(entity, e => model.AddEntity(e));
             Childs.Execute(model, engine);
-            engine.СonditionExecute(s => Childs.RuleList.Contains(s.Producer as IRule));
+            engine.СonditionExecute(s => Childs.RuleList.Contains(s.Producer));
         }
     }
 }

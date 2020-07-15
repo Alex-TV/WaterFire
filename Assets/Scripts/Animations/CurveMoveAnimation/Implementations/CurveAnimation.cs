@@ -7,17 +7,18 @@ namespace Animations.CurveMoveAnimation.Implementations
 {
     public class CurveAnimation : MonoBehaviour
     {
-        [SerializeField] private float _duration;
-        [SerializeField] private CurveType _curveType;
+        [SerializeField] private float _duration =default;
+        [SerializeField] private CurveType _curveType = default;
 
-        [SerializeField] private float _amplitudeX;
-        [SerializeField] private float _amplitudeY;
+        [SerializeField] private float _amplitudeX = default;
+        [SerializeField] private float _amplitudeY = default;
 
-        [SerializeField] private Vector3 _targetPosition;
+        [SerializeField] private Vector3 _targetPosition = default;
 
         public float Duration => _duration;
 
         public Action AnimationCompleted { get; set; }
+
         private void OnAnimationCompleted()
         {
             AnimationCompleted?.Invoke();
@@ -47,14 +48,12 @@ namespace Animations.CurveMoveAnimation.Implementations
                 Vector2 updatedPosition = Vector2.Lerp(startPosition, targetPosition, progress);
                 updatedPosition.x += sinValue * jumpAmplitudeX;
                 updatedPosition.y += sinValue * jumpAmplitudeY;
-
                 transform.position = updatedPosition;
 
                 time += Time.deltaTime;
                 yield return null;
             }
             transform.position = targetPosition;
-
             OnAnimationCompleted();
         }
 

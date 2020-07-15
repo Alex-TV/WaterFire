@@ -12,5 +12,6 @@
         EventMouseMove,
         /// <summary> Двойной клик мыши </summary>
         EventMouseDoubleClick,
+        Loop,
     }
 }

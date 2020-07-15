@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 using Assets.Scripts.View;
 using EngineCore.GameLoop.Helpers;
@@ -10,11 +9,11 @@ namespace Module.VisualElementsModule.Models
     [Serializable]
     public class VisualElementsDescriptionModel
     {
-        [SerializeField] private GameElementView _view;
-        [SerializeField] private GameElementType _name;
+        [SerializeField] private GameElementView _view = default;
+        [SerializeField] private GameElementType _name = default;
 
         public GameElementView View => _view;
-
         public GameElementType Name => _name;
+
     }
 }
