@@ -9,26 +9,38 @@ namespace EngineCore.GameLoop.Pipeline
 {
     public class MoveElementPipeline : PipelineStage<MoveElementEntity>
     {
+        private int _startMoveElements;
+
         public MoveElementPipeline(PipelineEngine engine, MoveElementEntity entity, IRule rule) : base(engine, entity, rule)
         {
         }
 
         protected override void Processing()
         {
-            var startCoords = Entity.StartMoveCoords;
-            var endCoords = Entity.EndMoveCoords;
-
-            var startElement = Entity.GridEntity.Grid[startCoords.X, startCoords.Y];
-            var endElement = Entity.GridEntity.Grid[endCoords.X, endCoords.Y];
-            startElement.View.Move(CoordinateConverter.FieldCoordsToPosition(endCoords), () =>
+            foreach (var entityMoveElement in Entity.MoveElementCoords)
             {
+                var startCoords = entityMoveElement.StartCoords;
+                var endCoords = entityMoveElement.EndCoords;
+                var startElement = Entity.GridEntity.Grid[startCoords.X, startCoords.Y];
+                var endElement = Entity.GridEntity.Grid[endCoords.X, endCoords.Y];
+                _startMoveElements++;
+                startElement.View.Move(CoordinateConverter.FieldCoordsToPosition(endCoords), MoveEnd);
+                if (endElement.Name != GameElementType.Empty)
+                {
+                    _startMoveElements++;
+                    endElement.View.Move(CoordinateConverter.FieldCoordsToPosition(startCoords), MoveEnd);
+                }
                 Entity.GridEntity.Grid[endCoords.X, endCoords.Y] = startElement;
                 Entity.GridEntity.Grid[startCoords.X, startCoords.Y] = endElement;
-                FinishStage(Entity.GridEntity);
-            });
-            if (endElement.Name != GameElementType.Empty)
+            }
+        }
+
+        private void MoveEnd()
+        {
+            _startMoveElements--;
+            if (_startMoveElements <= 0)
             {
-                endElement.View.Move(CoordinateConverter.FieldCoordsToPosition(startCoords), () => {});
+                FinishStage(Entity.GridEntity);
             }
         }
     }

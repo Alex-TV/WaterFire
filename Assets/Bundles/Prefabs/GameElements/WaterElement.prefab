@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6652c0d82359d4b4bb7d0ad269d092f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.5
-  _curveType: 1
+  _duration: 0.3
+  _curveType: 2
   _amplitudeX: 0
   _amplitudeY: 0
   _targetPosition: {x: 0, y: 0, z: 0}

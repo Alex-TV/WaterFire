@@ -1,8 +1,10 @@
 ﻿
+using System.Collections.Generic;
 using Assets.Scripts.EngineCore.Engine.Pipeline;
 using Engine.Pipeline;
 using Engine.Rules;
 using EngineCore.GameLoop.Entities;
+using EngineCore.GameLoop.Entities.Models;
 using EngineCore.GameLoop.Helpers;
 using GameLoop.Entities;
 using Scripts.Controllers.Helpers;
@@ -84,7 +86,11 @@ namespace EngineCore.GameLoop.Rules
                 }
             }
 
-            var moveElementEntity = new MoveElementEntity(entity, engine.InputFacade.MouseDown, endCoords);
+            var moveElementCoordsList = new List<MoveElementCoordsModel>
+            {
+                new MoveElementCoordsModel(engine.InputFacade.MouseDown, endCoords)
+            };
+            var moveElementEntity = new MoveElementEntity(entity, moveElementCoordsList);
             new ReturnEntityPipeline<MoveElementEntity>(engine, moveElementEntity, this);
             return true;
         }

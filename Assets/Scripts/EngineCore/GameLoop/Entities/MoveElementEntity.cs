@@ -1,21 +1,20 @@
 ﻿
+using System.Collections.Generic;
 using Engine.Models.Interfaces;
+using EngineCore.GameLoop.Entities.Models;
 using GameLoop.Entities;
-using Scripts.Controllers.Helpers;
 
 namespace EngineCore.GameLoop.Entities
 {
     public class MoveElementEntity  : IGameStateEntity
     {
         public ElementGridEntity GridEntity { get; }
-        public FieldCoords StartMoveCoords { get; }
-        public FieldCoords EndMoveCoords { get; }
+        public List<MoveElementCoordsModel> MoveElementCoords { get; }
 
-        public MoveElementEntity(ElementGridEntity gridEntity, FieldCoords startMoveCoords, FieldCoords endMoveCoords)
+        public MoveElementEntity(ElementGridEntity gridEntity, List<MoveElementCoordsModel> moveElementCoords)
         {
             GridEntity = gridEntity;
-            StartMoveCoords = startMoveCoords;
-            EndMoveCoords = endMoveCoords;
+            MoveElementCoords = moveElementCoords;
         }
     }
 }
