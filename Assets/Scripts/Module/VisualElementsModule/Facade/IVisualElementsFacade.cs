@@ -9,5 +9,6 @@ namespace Module.VisualElementsModule.Facade
         void Init();
         GameElementView CreateVisualElement(GameElementType name);
         void DestroyVisualElement(GameElementView view);
+        void RemoveAllVisualElement();
     }
 }

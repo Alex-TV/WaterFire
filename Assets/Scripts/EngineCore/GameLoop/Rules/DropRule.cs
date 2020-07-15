@@ -1,6 +1,5 @@
 ﻿
 using System.Collections.Generic;
-using Assets.Scripts.EngineCore.Engine.Pipeline;
 using Engine.Pipeline;
 using Engine.Rules;
 using EngineCore.GameLoop.Entities;
@@ -21,12 +20,8 @@ namespace EngineCore.GameLoop.Rules
             }
 
             var moveElementCoordsList = new List<MoveElementCoordsModel>();
-            foreach (var moveElement in FillElements(entity.Grid))
+            foreach (var moveElement in FindDropElements(entity.Grid))
             {
-                if (moveElement == null)
-                {
-                    continue;
-                }
                 moveElementCoordsList.Add(moveElement);
             }
 
@@ -34,16 +29,14 @@ namespace EngineCore.GameLoop.Rules
             {
                 return false;
             }
-            var moveElementEntity = new MoveElementEntity(entity, moveElementCoordsList);
-            new ReturnEntityPipeline<MoveElementEntity>(engine, moveElementEntity, this);
 
+            var moveElementEntity = new MoveElementEntity(entity, moveElementCoordsList);
+            new LambdaPipelineStage<MoveElementEntity>(engine, t =>   t, moveElementEntity, this, "Add MoveElementEntity to sate");
             return true;
         }
 
-        private IEnumerable<MoveElementCoordsModel> FillElements(VisualElementModel[,] grid)
+        private IEnumerable<MoveElementCoordsModel> FindDropElements(VisualElementModel[,] grid)
         {
-
-            FieldCoords endMove;
             for (var coll = 0; coll < grid.GetLength(0); coll++)
             {
                 for (var row = 0; row < grid.GetLength(1); row++)
@@ -51,7 +44,7 @@ namespace EngineCore.GameLoop.Rules
                     var currentElement = grid[coll, row];
                     if (currentElement.Name == GameElementType.Empty)
                     {
-                        endMove = new FieldCoords(coll,row);
+                        var endMove = new FieldCoords(coll,row);
                         for (var dropRow = row; dropRow < grid.GetLength(1); dropRow++)
                         {
                             var dropElement = grid[coll, dropRow];

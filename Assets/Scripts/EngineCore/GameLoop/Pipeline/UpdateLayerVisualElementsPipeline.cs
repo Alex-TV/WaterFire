@@ -24,7 +24,6 @@ namespace EngineCore.GameLoop.Pipeline
 
                 layer++;
             }
-
             FinishStage(Entity);
         }
     }

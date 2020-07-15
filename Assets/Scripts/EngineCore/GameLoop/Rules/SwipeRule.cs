@@ -1,6 +1,5 @@
 ﻿
 using System.Collections.Generic;
-using Assets.Scripts.EngineCore.Engine.Pipeline;
 using Engine.Pipeline;
 using Engine.Rules;
 using EngineCore.GameLoop.Entities;
@@ -91,7 +90,8 @@ namespace EngineCore.GameLoop.Rules
                 new MoveElementCoordsModel(engine.InputFacade.MouseDown, endCoords)
             };
             var moveElementEntity = new MoveElementEntity(entity, moveElementCoordsList);
-            new ReturnEntityPipeline<MoveElementEntity>(engine, moveElementEntity, this);
+            new LambdaPipelineStage<MoveElementEntity>(engine, t => t, moveElementEntity, this, "Add MoveElementEntity to sate");
+
             return true;
         }
 

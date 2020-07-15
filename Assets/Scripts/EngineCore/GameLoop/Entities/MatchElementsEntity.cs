@@ -15,7 +15,6 @@ namespace EngineCore.GameLoop.Entities
         {
             GridEntity = gridEntity;
             MatchElementsCoords = matchElementsCoords;
-
         }
     }
 }

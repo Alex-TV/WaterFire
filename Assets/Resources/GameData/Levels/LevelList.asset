@@ -16,47 +16,64 @@ MonoBehaviour:
   - _num: 1
     _fieldModel:
       _collCount: 6
-      _rowsCount: 6
+      _rowsCount: 3
       _grid:
       - _element: 1
       - _element: 2
-      - _element: 3
-      - _element: 2
-      - _element: 2
       - _element: 1
-      - _element: 1
-      - _element: 2
-      - _element: 3
-      - _element: 2
-      - _element: 2
-      - _element: 1
-      - _element: 1
-      - _element: 3
       - _element: 2
       - _element: 3
       - _element: 3
       - _element: 1
-      - _element: 1
-      - _element: 2
       - _element: 2
       - _element: 1
-      - _element: 2
-      - _element: 1
-      - _element: 1
-      - _element: 2
       - _element: 3
       - _element: 1
       - _element: 1
       - _element: 1
       - _element: 1
       - _element: 1
-      - _element: 2
       - _element: 1
       - _element: 1
       - _element: 1
-  - _num: 1
+  - _num: 2
     _fieldModel:
-      _collCount: 0
+      _collCount: 6
+      _rowsCount: 5
+      _grid:
+      - _element: 1
+      - _element: 2
+      - _element: 3
+      - _element: 2
+      - _element: 2
+      - _element: 1
+      - _element: 1
+      - _element: 2
+      - _element: 3
+      - _element: 2
+      - _element: 2
+      - _element: 1
+      - _element: 1
+      - _element: 3
+      - _element: 2
+      - _element: 3
+      - _element: 3
+      - _element: 1
+      - _element: 1
+      - _element: 2
+      - _element: 3
+      - _element: 2
+      - _element: 2
+      - _element: 1
+      - _element: 1
+      - _element: 2
+      - _element: 2
+      - _element: 1
+      - _element: 1
+      - _element: 1
+  - _num: 3
+    _fieldModel:
+      _collCount: 6
       _rowsCount: 6
       _grid:
       - _element: 1
@@ -72,26 +89,26 @@ MonoBehaviour:
       - _element: 2
       - _element: 1
       - _element: 1
+      - _element: 3
+      - _element: 2
+      - _element: 3
+      - _element: 3
+      - _element: 1
+      - _element: 1
+      - _element: 2
+      - _element: 2
+      - _element: 1
+      - _element: 2
+      - _element: 1
+      - _element: 1
+      - _element: 2
+      - _element: 3
       - _element: 1
       - _element: 1
       - _element: 1
       - _element: 1
       - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
-      - _element: 1
+      - _element: 2
       - _element: 1
       - _element: 1
       - _element: 1

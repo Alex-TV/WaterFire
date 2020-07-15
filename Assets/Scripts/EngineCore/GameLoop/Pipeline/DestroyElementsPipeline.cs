@@ -11,9 +11,8 @@ namespace EngineCore.GameLoop.Pipeline
 {
    public class DestroyElementsPipeline: PipelineStage<MatchElementsEntity>
    {
-       private IVisualElementsFacade _elementsFacade;
+       private readonly IVisualElementsFacade _elementsFacade;
        private int _dieCount;
-        
 
         public DestroyElementsPipeline(PipelineEngine engine, MatchElementsEntity entity, IRule rule) : base(engine, entity, rule)
         {

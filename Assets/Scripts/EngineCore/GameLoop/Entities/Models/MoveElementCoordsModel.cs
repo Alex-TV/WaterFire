@@ -1,5 +1,4 @@
 ﻿
-
 using Scripts.Controllers.Helpers;
 
 namespace EngineCore.GameLoop.Entities.Models

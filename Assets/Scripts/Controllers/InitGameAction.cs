@@ -1,15 +1,17 @@
 ﻿
 using Controllers.Interfaces;
-using Engine.Models.Interfaces;
 using GameLoop;
 using GameLoop.Helpers;
 using GameLoop.Model;
 using Module.Input.Facade;
 using Module.Input.Facade.Controllers;
+using Module.IUIComponents.Facade;
 using Module.Levels.Facade;
 using Module.VisualElementsModule.Facade;
 using Scripts.Controllers.Helpers;
 using UnityEngine;
+using View;
+using View.Helpers;
 
 namespace Controllers
 {
@@ -20,10 +22,9 @@ namespace Controllers
         private IInputController _inputController;
         private IUpdateController _updateController;
         private ILevelFacade _levelFacade;
-        private IGameStateModel _gameStateModel;
         private IVisualElementsFacade _visualElementsFacade;
         private IInputFacade _inputFacade;
-
+        private IUIComponentFacade _uiComponentFacade;
 
         private void Awake()
         {
@@ -33,13 +34,13 @@ namespace Controllers
 
         private void Bind()
         {
-            _levelFacade = new LevelFacade();
+            _uiComponentFacade = new UIComponentFacade();
+            _levelFacade = new LevelFacade(_uiComponentFacade);
             _inputController = new InputController();
             _visualElementsFacade = new VisualElementsFacade();
-            _gameStateModel = new GameStateModel();
             _inputFacade = new InputFacade(_inputController);
 
-            _mainEngineController = new MainEngineController(_gameStateModel, _levelFacade, _visualElementsFacade, _inputController, _inputFacade);
+            _mainEngineController = new MainEngineController(_levelFacade, _visualElementsFacade, _inputController, _inputFacade, _uiComponentFacade);
 
             var objUpdateController = new GameObject("UpdateController");
             _updateController = objUpdateController.AddComponent<UpdateController>();
@@ -49,12 +50,38 @@ namespace Controllers
 
         private void Init()
         {
+
+            var uiComponents = FindObjectsOfType<UIComponentView>();
+            if (uiComponents != null)
+            {
+                foreach (var uiComponentView in uiComponents)
+                {
+                    _uiComponentFacade.RegComponent(uiComponentView);
+                }
+            }
+            _uiComponentFacade.ActionDone += HandleUiComponentFacadeActionDone;
+            
             _levelFacade.Init();
+            _levelFacade.LoadLevel(1);
             _visualElementsFacade.Init();
             _inputFacade.Init();
             _updateController.Active();
-            _mainEngineController.Init();
+            _mainEngineController.Init(new GameStateModel());
             _mainEngineController.EngineRequest(EventTypeEnum.LevelStart);
+        }
+
+        private void HandleUiComponentFacadeActionDone(object sender, UIViewActionArgs args)
+        {
+            switch (args.ActionType)
+            {
+                case ViewActionType.NextLevelButtonClick:
+                    _visualElementsFacade.RemoveAllVisualElement();
+                    _levelFacade.LoadNextLevel();
+                    _mainEngineController.Clear();
+                    _mainEngineController.Init(new GameStateModel());
+                    _mainEngineController.EngineRequest(EventTypeEnum.LevelStart);
+                    break;
+            }
         }
     }
 }

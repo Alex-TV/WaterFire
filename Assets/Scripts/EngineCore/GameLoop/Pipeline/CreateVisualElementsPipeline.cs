@@ -11,7 +11,8 @@ namespace EngineCore.GameLoop.Pipeline
 {
     public class CreateVisualElementsPipeline : PipelineStage<CreateVisualElementsEntity>
     {
-        private IVisualElementsFacade _elementsFacade;
+        private readonly IVisualElementsFacade _elementsFacade;
+
         public CreateVisualElementsPipeline(PipelineEngine engine, CreateVisualElementsEntity entity, IRule rule) : base(engine, entity, rule)
         {
             _elementsFacade = engine.VisualElementsFacade;

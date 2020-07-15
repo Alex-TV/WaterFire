@@ -1,17 +1,14 @@
 ﻿namespace GameLoop.Helpers
 {
     public enum EventTypeEnum {
+        /// <summary> Не определено </summary>
         Undefined,
         /// <summary>Стартуем движок (запуск уровня)</summary>
         LevelStart,
         /// <summary> Кнопка мыши отпущена </summary>
         EventMouseUp,
-        /// <summary> Кнопка мыши нажата </summary>
-        EventMouseDown,
-        /// <summary> Перемещение мыши </summary>
-        EventMouseMove,
-        /// <summary> Двойной клик мыши </summary>
-        EventMouseDoubleClick,
-        Loop,
+        /// <summary> игровой цикл </summary>
+        Loop
+
     }
 }

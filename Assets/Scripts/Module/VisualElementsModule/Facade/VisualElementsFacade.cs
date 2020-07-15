@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.View;
 using EngineCore.GameLoop.Helpers;
@@ -11,6 +12,7 @@ namespace Module.VisualElementsModule.Facade
     {
         private IVisualElementsProvider _elementsProvider;
 
+        private readonly List<GameElementView> _cache = new List<GameElementView>();
         public void Init()
         {
             _elementsProvider = Resources.Load<VisualElementsProvider>("GameData/Views/VisualElementsList");
@@ -21,14 +23,31 @@ namespace Module.VisualElementsModule.Facade
             var elementsDescription = _elementsProvider.Elements.FirstOrDefault(e => e.Name == name);
             if (elementsDescription == null)
             {
-                throw new System.Exception($"No description for item {name}");
+                throw new System.Exception($"No elements description for item {name}");
             }
-            return Object.Instantiate(elementsDescription.View);
+            var gameElementView = Object.Instantiate(elementsDescription.View);
+            _cache.Add(gameElementView);
+            return gameElementView;
         }
+
+
 
         public void DestroyVisualElement(GameElementView view)
         {
+            if (_cache.Contains(view))
+            {
+                _cache.Remove(view);
+            }
             Object.Destroy(view.gameObject);
+        }
+
+        public void RemoveAllVisualElement()
+        {
+            foreach (var gameElementView in _cache)
+            {
+                Object.Destroy(gameElementView.gameObject);
+            }
+            _cache.Clear();
         }
     }
 }

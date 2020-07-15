@@ -11,9 +11,9 @@ namespace Engine.Pipeline
     public class LambdaPipelineStage<T> : AbstractPipelineStage<T> where T : class, IGameStateEntity
     {
         public string Alias { get; protected set; }
-        public Func<IGameStateEntity, T> Lambda { get; protected set; }
+        public Func<T, T> Lambda { get; protected set; }
 
-        public LambdaPipelineStage(AbstractPipelineEngine engine, Func<IGameStateEntity, T> lambda, T entity,
+        public LambdaPipelineStage(AbstractPipelineEngine engine, Func<T, T> lambda, T entity,
             IRule rule, string alias) : base(engine, entity, rule)
         {
             Lambda = lambda;

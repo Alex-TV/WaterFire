@@ -1,4 +1,5 @@
-﻿using Controllers.Interfaces;
+﻿
+using Controllers.Interfaces;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using GameLoop.Helpers;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Module.Input.Facade;
 using Module.Input.Facade.Controllers;
+using Module.IUIComponents.Facade;
 using Module.Levels.Facade;
 using Module.VisualElementsModule.Facade;
 using Scripts.Controllers.Helpers;
@@ -16,7 +18,7 @@ namespace GameLoop
     public class MainEngineController : ICustomUpdatable
     {
         private readonly PipelineEngine _engine;
-        private readonly IGameStateModel _model;
+        private  IGameStateModel _model;
         private readonly IInputController _inputController;
         private readonly RulesPacksFactory _rulesPacksFactory;
 
@@ -26,59 +28,34 @@ namespace GameLoop
                             {EventTypeEnum.LevelStart, new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
                                 (f, m, e) => f.StartLevelPack.Applay(m, e, "Start Level Pack")
                             }},
-                            {EventTypeEnum.EventMouseMove,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>>
-                            {
-                                (f, m, e) => { f.UserMoveElementsPack.Applay(m,e,"Mouse Move"); }
-                            }},
-                            {EventTypeEnum.EventMouseDown,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
-                                    (f, m, e) => { }
-                            }},
-                            {EventTypeEnum.EventMouseUp,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
-                                (f, m, e) => f.UserMoveElementsPack.Applay(m,e,"Mouse Up")
-
-                            }},
-                            {EventTypeEnum.EventMouseDoubleClick,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
-                                    (f, m, e) => { }
+                            { EventTypeEnum.EventMouseUp,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
+                                (f, m, e) => f.UserMoveElementsPack.Applay(m,e,"Mouse Up Pack"),
                             }},
                             { EventTypeEnum.Loop,new List<Action<RulesPacksFactory, IGameStateModel, PipelineEngine>> {
-                                (f, m, e) => f.DropPack.Applay(m,e,"Drop"),
-
+                                (f, m, e) => f.LoopPack.Applay(m,e,"Drop Pack"),
                             }}, 
-
                     };
 
-
-        public MainEngineController(IGameStateModel model, 
-                                    ILevelFacade levelFacade, 
+        public MainEngineController(ILevelFacade levelFacade, 
                                     IVisualElementsFacade visualElementsFacade,
                                     IInputController inputController,
-                                    IInputFacade inputFacade)
+                                    IInputFacade inputFacade,
+                                    IUIComponentFacade uiComponentFacade)
         {
-            _model = model;
             _inputController = inputController;
             _rulesPacksFactory = new RulesPacksFactory();
-            _engine = new PipelineEngine(levelFacade, visualElementsFacade, inputFacade);
+            _engine = new PipelineEngine(levelFacade, visualElementsFacade, inputFacade, uiComponentFacade);
         }
 
-
-        public void Init()
+        public void Init(IGameStateModel model)
         {
+            _model = model;
             _inputController.MouseUp += HandleInputControllerMouseUp;
         }
 
         private void HandleInputControllerMouseUp(object sender, FieldCoords coords)
         {
             EngineRequest(EventTypeEnum.EventMouseUp);
-        }
-
-        private void HandleInputControllerMouseMove(object sender, FieldCoords coords)
-        {
-            EngineRequest(EventTypeEnum.EventMouseMove);
-        }
-
-        private void HandleInputControllerMouseDown(object sender, FieldCoords coords)
-        {
-            EngineRequest(EventTypeEnum.EventMouseDown);
         }
 
         public void EngineRequest(EventTypeEnum eventTypeEnum)
@@ -96,6 +73,12 @@ namespace GameLoop
         public void CustomUpdate()
         {
             EngineRequest(EventTypeEnum.Loop);
+        }
+
+        public void Clear()
+        {
+            _model = null;
+            _inputController.MouseUp -= HandleInputControllerMouseUp;
         }
     }
 }

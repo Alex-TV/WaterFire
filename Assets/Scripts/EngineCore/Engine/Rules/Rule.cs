@@ -1,5 +1,4 @@
 ﻿
-using Assets.Scripts.EngineCore.Engine.Pipeline;
 using Engine.Models.Interfaces;
 using Engine.Pipeline;
 using Engine.Rules.Interfaces;
@@ -7,8 +6,7 @@ using Engine.Rules.Interfaces;
 namespace Engine.Rules
 {
     /// <summary>
-    ///     общий предок всех воркеров, вызываемых для всех ситуаций на игровом поле. Хотя не факт ещё, что им потребуется
-    ///     общий предок.
+    ///  Общий предок всех воркеров, вызываемых для всех ситуаций на игровом поле. Хотя не факт ещё, что им потребуется
     /// </summary>
     public abstract class Rule<T> : IRule where T : class, IGameStateEntity
     {
@@ -20,7 +18,7 @@ namespace Engine.Rules
             var engineInternal = engine as PipelineEngine;
             if (!CheckRule(entity, engineInternal))
             {
-                new ReturnEntityPipeline<T>(engineInternal, entity, this);
+                new LambdaPipelineStage<T>(engine, t => t, entity, this, "Return entity pipeline");
             }
         }
     }

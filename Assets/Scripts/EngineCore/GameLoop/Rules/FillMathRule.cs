@@ -116,6 +116,5 @@ namespace EngineCore.GameLoop.Rules
             }
             return result;
         }
-
     }
 }

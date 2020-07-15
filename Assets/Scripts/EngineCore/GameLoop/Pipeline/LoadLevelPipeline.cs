@@ -9,7 +9,7 @@ namespace EngineCore.GameLoop.Pipeline
 {
     public class LoadLevelPipeline : PipelineStage<GameStateEntity>
     {
-        private ILevelFacade _levelFacade;
+        private readonly ILevelFacade _levelFacade;
 
         public LoadLevelPipeline(PipelineEngine engine, GameStateEntity entity, IRule rule) : base(engine, entity, rule)
         {
@@ -18,7 +18,7 @@ namespace EngineCore.GameLoop.Pipeline
 
         protected override void Processing()
         {
-            var startLevel = _levelFacade.LoadLevel(1);
+            var startLevel = _levelFacade.GetCurrentLevel();
             var levelModelEntity = new LevelModelEntity(startLevel);
             FinishStage(levelModelEntity);
         }

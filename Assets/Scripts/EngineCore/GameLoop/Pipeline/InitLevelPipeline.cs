@@ -14,7 +14,6 @@ namespace EngineCore.GameLoop.Pipeline
     {
         public InitLevelPipeline(PipelineEngine engine, LevelModelEntity entity, IRule rule) : base(engine, entity, rule)
         {
-
         }
 
         protected override void Processing()

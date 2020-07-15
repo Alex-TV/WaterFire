@@ -8,5 +8,7 @@ namespace Module.Levels.Facade
     {
         void Init();
         LevelConfigModel LoadLevel(int levelNum);
+        LevelConfigModel LoadNextLevel();
+        LevelConfigModel GetCurrentLevel();
     }
 }

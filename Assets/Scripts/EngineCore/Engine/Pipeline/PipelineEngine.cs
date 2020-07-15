@@ -1,6 +1,6 @@
 ﻿
-
 using Module.Input.Facade;
+using Module.IUIComponents.Facade;
 using Module.Levels.Facade;
 using Module.VisualElementsModule.Facade;
 
@@ -11,14 +11,17 @@ namespace Engine.Pipeline
         public ILevelFacade LevelFacade { get; }
         public IVisualElementsFacade VisualElementsFacade { get; }
         public IInputFacade InputFacade { get; }
+        public IUIComponentFacade UiComponentFacade { get; }
 
         public PipelineEngine(ILevelFacade levelFacade, 
                               IVisualElementsFacade visualElementsFacade, 
-                              IInputFacade inputFacade)
+                              IInputFacade inputFacade,
+                              IUIComponentFacade uiComponentFacade)
         {
             LevelFacade = levelFacade;
             VisualElementsFacade = visualElementsFacade;
             InputFacade = inputFacade;
+            UiComponentFacade = uiComponentFacade;
         }
     }
 }

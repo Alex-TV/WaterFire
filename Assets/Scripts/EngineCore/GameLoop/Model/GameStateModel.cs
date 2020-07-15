@@ -8,7 +8,7 @@ namespace GameLoop.Model
 {
     public class GameStateModel : IGameStateModel
     {
-        private Dictionary<Type, IGameStateEntity> _entitiesContainer = new Dictionary<Type, IGameStateEntity>();
+        private readonly Dictionary<Type, IGameStateEntity> _entitiesContainer = new Dictionary<Type, IGameStateEntity>();
 
         public T TryGetEntity<T>() where T : class, IGameStateEntity  
         {
