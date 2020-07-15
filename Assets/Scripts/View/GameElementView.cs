@@ -10,7 +10,7 @@ namespace Assets.Scripts.View
         [SerializeField] private SpriteRenderer _sprite = default;
         [SerializeField] private CurveAnimation _curveAnimation = default;
 
-        private Action _dieCallBack;
+        private Action<GameElementView> _dieCallBack;
 
         private void Start()
         {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.View
             _sprite.sortingOrder = layer;
         }
 
-        public void Die(Action callBack)
+        public void Die(Action<GameElementView> callBack)
         {
             _dieCallBack = callBack;
             _animator.SetTrigger("IsDestroy");
@@ -30,7 +30,7 @@ namespace Assets.Scripts.View
 
         private void OnEndDie()
         {
-            _dieCallBack?.Invoke();
+            _dieCallBack?.Invoke(this);
         }
 
         public void Move(Vector3 position, Action callBack)

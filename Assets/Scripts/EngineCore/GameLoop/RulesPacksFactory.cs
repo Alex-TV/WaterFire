@@ -23,7 +23,8 @@ namespace GameLoop
 
         public RulesPack DropPack { get; } = new RulesPack(
             new SeparateRulesPack(new DropRule()),
-            new MoveElementRule()
+            new SeparateRulesPack(new MoveElementRule()),
+            new FillMathRule()
             );
 
         /// <summary> Заполнение матчей элементов </summary>

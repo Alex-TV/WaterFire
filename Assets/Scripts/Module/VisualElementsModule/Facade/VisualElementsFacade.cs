@@ -28,7 +28,7 @@ namespace Module.VisualElementsModule.Facade
 
         public void DestroyVisualElement(GameElementView view)
         {
-            Object.Destroy(view);
+            Object.Destroy(view.gameObject);
         }
     }
 }
