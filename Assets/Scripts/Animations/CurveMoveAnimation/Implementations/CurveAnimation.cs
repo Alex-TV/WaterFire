@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections;
-using Assets.Scripts.Utils.Animations.CurveMoveAnimation.Helpers;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Animations.CurveMoveAnimation.Implementations
@@ -8,64 +7,41 @@ namespace Animations.CurveMoveAnimation.Implementations
     public class CurveAnimation : MonoBehaviour
     {
         [SerializeField] private float _duration =default;
-        [SerializeField] private CurveType _curveType = default;
-
-        [SerializeField] private float _amplitudeX = default;
-        [SerializeField] private float _amplitudeY = default;
-
+        [SerializeField] private AnimationCurve _curveType = default;
+        [SerializeField] private Vector2 _amplitude = default;
         [SerializeField] private Vector3 _targetPosition = default;
+        [SerializeField] private float _a = 10f;
 
-        public float Duration => _duration;
 
-        public Action AnimationCompleted { get; set; }
-
-        private void OnAnimationCompleted()
+        public async void Play(Vector3 position, Action callBack)
         {
-            AnimationCompleted?.Invoke();
-        }
-
-        public void Play()
-        {
-            StartCoroutine(AnimationCoroutine(_duration, _targetPosition, _amplitudeX, _amplitudeY));
-        }
-
-        public void Play(Vector3 position, Action callBack)
-        {
-            AnimationCompleted = callBack;
             _targetPosition = position;
-            StartCoroutine(AnimationCoroutine(_duration, _targetPosition, _amplitudeX, _amplitudeY));
+            await PlayAnimation();
+            callBack.Invoke();
         }
 
-        private IEnumerator AnimationCoroutine(float duration, Vector3 targetPosition, float jumpAmplitudeX, float jumpAmplitudeY)
+        private async Task PlayAnimation()
         {
             var time = 0f;
             Vector2 startPosition = transform.position;
-            while(time <= duration)
+            while(time <= _duration)
             {
-                var progress = time / duration;
+                var progress = time / _duration ;
                 var sinValue = GetPositionAdditionalValue(_curveType, progress);
 
-                Vector2 updatedPosition = Vector2.Lerp(startPosition, targetPosition, progress);
-                updatedPosition.x += sinValue * jumpAmplitudeX;
-                updatedPosition.y += sinValue * jumpAmplitudeY;
+                var updatedPosition = Vector2.Lerp(startPosition, _targetPosition, progress);
+                updatedPosition += sinValue * _amplitude;
                 transform.position = updatedPosition;
 
                 time += Time.deltaTime;
-                yield return null;
+                await Task.Yield();
             }
-            transform.position = targetPosition;
-            OnAnimationCompleted();
+            transform.position = _targetPosition;
         }
 
-        private float GetPositionAdditionalValue(CurveType type, float progress)
+        private float GetPositionAdditionalValue(AnimationCurve type, float progress)
         {
-            switch (type)
-            {
-                case CurveType.Sin:
-                    return Mathf.Sin(progress * Mathf.PI);                  
-                default:
-                    return 0f;
-            }
+            return progress * type.Evaluate(progress);
         }
     }
 }
